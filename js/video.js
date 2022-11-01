@@ -1,6 +1,13 @@
+
 var video = document.querySelector('.video');
-video.autoplay = false;
-video.loop = false;
+
+window.addEventListener("load", function() {
+	console.log("Good job opening the window");
+	video.autoplay = false;
+	video.loop = false;
+	console.log("Autoplay is set to "+ video.autoplay)
+	console.log("Loop is set to "+ video.loop)
+});
 
 document.getElementById('play').addEventListener('click', playVid);
 
@@ -24,20 +31,22 @@ function playVid() {
 	video.play();
 	var slider = document.getElementById('slider');
 	document.getElementById('volume').innerHTML= slider.value + '%';
+	console.log("Play Video")
   }
 
 function pauseVid() {
 	video.pause();
+	console.log("Pause Video")
   }
 
 function slowVid() {
-	video.playbackRate -= 0.1;
-	console.log(video.playbackRate);
+	video.playbackRate *= 0.9;
+	console.log("Speed is " + video.playbackRate);
   }
 
 function speedVid() {
-	video.playbackRate += 0.1;
-	console.log(video.playbackRate);
+	video.playbackRate /= 0.9;
+	console.log("Speed is " + video.playbackRate);
   }
 
 function skipVid() {
@@ -46,7 +55,7 @@ function skipVid() {
 	} else {
 		video.currentTime+=10;
 	}
-	console.log(video.currentTime);
+	console.log("Video current time is "+ video.currentTime);
   }
 
   function muteVid() {
@@ -54,9 +63,11 @@ function skipVid() {
 	if (video.muted == true){
 		document.querySelector('#mute').innerHTML = 'Mute';
 		video.muted = false;
+		console.log("Unmute")
 	} else {
 		document.querySelector('#mute').innerHTML = 'Unmute';
 		video.muted = true;
+		console.log("Mute")
 	}
   }
 
@@ -70,18 +81,10 @@ function skipVid() {
 
   function oldSchool(){
 	document.querySelector(".video").className= "video oldSchool";
+	console.log("Old School Video")
   }
 
   function origSchool(){
 	document.querySelector(".video").className= "video";
+	console.log("Original Video")
   }
-
-window.addEventListener("load", function() {
-	console.log("Good job opening the window");
-});
-
-
-//document.querySelector("#play").addEventListener("click", function() {
-	//console.log("Play Video");
- //});
-
